@@ -23,7 +23,6 @@ services:
 
   ui:
     image: r2d2k/ui
-#    build: ./ui
     container_name: ui_v_1
     ports:
       - 9292:9292/tcp
@@ -31,7 +30,6 @@ services:
       - front_net
       - back_net
   post:
-#    image: r2d2k/post
     build: ./post-py
     environment:
       - POST_DATABASE_HOST=post_db
@@ -48,7 +46,6 @@ services:
 
   comment:
     image: r2d2k/comment
-#    build: ./comment
     container_name: comment_v_1
     networks:
       back_net:
