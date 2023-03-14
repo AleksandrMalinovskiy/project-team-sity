@@ -22,8 +22,8 @@ services:
           - post_db
 
   ui:
-#    image: r2d2k/ui
-    build: ./ui
+    image: r2d2k/ui
+#    build: ./ui
     container_name: ui_v_1
     ports:
       - 9292:9292/tcp
