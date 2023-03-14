@@ -1,4 +1,4 @@
-FROM ruby:2.7.4-alpine
+FROM ruby:lastes 
 USER root  
 RUN  apk upgrade \
      && apk add  --no-cache ruby-full ruby-dev build-base
@@ -9,7 +9,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 ADD Gemfile* $APP_HOME/
-RUN sudo gem install bundler:1.17.2 -n /usr/local/bin
+RUN gem install bundler:1.17.2
 RUN bundle install
 ADD . $APP_HOME
 
