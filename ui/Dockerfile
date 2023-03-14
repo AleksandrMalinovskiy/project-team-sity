@@ -9,7 +9,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 ADD Gemfile* $APP_HOME/
-RUN gem install bundler:1.17.2 -n /usr/local/bin
+RUN sudo gem install bundler:1.17.2 -n /usr/local/bin
 RUN bundle install
 ADD . $APP_HOME
 
