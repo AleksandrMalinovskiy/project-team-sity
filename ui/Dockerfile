@@ -1,4 +1,4 @@
-FROM ruby:lastes 
+FROM ruby
 USER root  
 RUN  apk upgrade \
      && apk add  --no-cache ruby-full ruby-dev build-base
