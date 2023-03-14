@@ -1,0 +1,63 @@
+version: '3.3'
+services:
+  nginx:
+    container_name: nginx-stage
+    image: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./htpasswd:/etc/nginx/conf.d/htpasswd
+    networks:
+      - front_net
+
+  post_db:
+    image: mongo:3.2
+    container_name: mongodb
+    volumes:
+      - post_db:/data/db
+    ports:
+      - '27017:27017'
+    networks:
+      back_net:
+        aliases:
+          - post_db
+
+  ui:
+    image: r2d2k/ui
+    container_name: ui_v_1
+    ports:
+      - 9292:9292/tcp
+    networks:
+      - front_net
+      - back_net
+  post:
+    image: r2d2k/post
+    environment:
+      - POST_DATABASE_HOST=post_db
+      - POST_DATABASE=posts
+    depends_on:
+      - post_db
+    ports:
+      - "5000:5000"
+    container_name: post_v_1
+    networks:
+      back_net:
+         aliases:
+           - post
+
+  comment:
+    image: r2d2k/comment
+    container_name: comment_v_1
+    networks:
+      back_net:
+         aliases:
+           - comment
+
+volumes:
+  post_db:
+
+networks:
+  front_net:
+  back_net:
