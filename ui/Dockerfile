@@ -1,4 +1,5 @@
 FROM ruby:2.7.4-alpine
+USER root  
 RUN  apk upgrade \
      && apk add  --no-cache ruby-full ruby-dev build-base
 
