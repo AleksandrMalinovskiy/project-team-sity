@@ -9,8 +9,8 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 ADD Gemfile* $APP_HOME/
-RUN gem install bundler:1.17.2
-RUN bundle install
+#RUN gem install bundler:1.17.2
+#RUN bundle install
 ADD . $APP_HOME
 
 ENV POST_SERVICE_HOST post
