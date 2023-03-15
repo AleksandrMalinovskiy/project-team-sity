@@ -31,8 +31,8 @@ services:
       - front_net
       - back_net
   post:
-#    image: r2d2k/post
-    build: ./post-py
+    image: r2d2k/post
+#    build: ./post-py
     environment:
       - POST_DATABASE_HOST=post_db
       - POST_DATABASE=posts
