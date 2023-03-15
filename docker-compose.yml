@@ -1,8 +1,8 @@
 version: '3.3'
 services:
   nginx:
+    image: aemalinovskiy/nginx
     container_name: nginx
-    build: ./nginx
     networks:
       - front_net
       - back_net
